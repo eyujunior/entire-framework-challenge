@@ -2,10 +2,11 @@ import React from "react";
 import { useQuery } from "@apollo/client";
 import { GET_MENUITEMS } from "../../apollo/queries";
 import { Link } from "react-router-dom";
+import Loader from "../common/Loader";
 const MenuItemWrapper = ({ path }) => {
   const { data, loading, error } = useQuery(GET_MENUITEMS);
 
-  if (loading) return <h1>loading...</h1>;
+  if (loading) return <Loader />;
   if (error) alert(error.message);
 
   const menuItem = data.menuItems?.data;
@@ -16,6 +17,7 @@ const MenuItemWrapper = ({ path }) => {
         {menuItem.map(({ attributes }) => {
           return (
             <li
+              key={attributes.title}
               className={` transition-all duration-1000 h-auto ease-in-out ${
                 attributes.title === "Homepage" &&
                 path === "/" &&
@@ -32,7 +34,6 @@ const MenuItemWrapper = ({ path }) => {
                     ? "/" + attributes.title.split(" ").join("-").toLowerCase()
                     : "/"
                 }`}
-                key={attributes.title}
                 className=""
               >
                 {attributes.title}
