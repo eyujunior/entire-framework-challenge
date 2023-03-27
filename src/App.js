@@ -1,8 +1,16 @@
+import { Routes, Route } from "react-router-dom";
+import Home from "./pages/Home";
+import LineUp from "./pages/LineUp";
+import Partners from "./pages/Partners";
 function App() {
   return (
-    <div>
-      <h1 className="text-center text-2xl">Hello</h1>
-    </div>
+    <>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="line" element={<LineUp />} />
+        <Route path="partners" element={<Partners />} />
+      </Routes>
+    </>
   );
 }
 
