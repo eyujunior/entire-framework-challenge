@@ -18,7 +18,7 @@ const MenuItemWrapper = ({ path }) => {
           return (
             <li
               key={attributes.title}
-              className={` transition-all duration-1000 h-auto ease-in-out ${
+              className={` transition-all duration-1000 ease-in-out ${
                 attributes.title === "Homepage" &&
                 path === "/" &&
                 "opacity-0 invisible overflow-hidden h-0 -mt-2"
